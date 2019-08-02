@@ -40,6 +40,14 @@
                         @can('crear-notas')
                         <li class="nav-item"><a class="nav-link" href="{{ route('notas.create') }}">Crear nota</a></li>
                         @endcan
+
+                         @can('user.index')
+                        <li class="nav-item"><a class="nav-link" href="{{ route('user.index') }}">Usuarios</a></li>
+                        @endcan
+
+                        @can('roles.index')
+                        <li class="nav-item"><a class="nav-link" href="{{ route('roles.index') }}">Roles</a></li>
+                        @endcan
                         
                     </ul>
 

@@ -14,7 +14,7 @@
                         </div>
                     @endif
 
-                    <table>
+                    <table class="table">
                         <thead>
                             <th>ID</th>
                             <th>Título</th>
@@ -35,6 +35,62 @@
                                 </tr>
                             @endforeach
 
+                        </tbody>
+                    </table>
+
+                    <div class="card-header">Table</div>
+
+                    <table class="table">
+                        <thead>
+                            <th>ID</th>
+                            <th>Título</th>
+                            <th>Acción</th>
+                        </thead>
+                        <tbody>
+                            {{-- {{dd($notas)}} --}}
+                            <?php
+                                $cont = 0;
+                                $array = array(1, 2, 3,4,5,6,7,8,9,10,11);
+                                $t[]=array();
+                                $t[0]="";
+                                $t[1]="";
+                                $t[2]="";
+                                foreach ($notas as &$nota) {     
+                            ?>
+                                {{-- @foreach ($notas as $nota) --}}
+                            <?php 
+                                    $cont++;//1
+                                    if($cont<=3){
+                                        $t[$cont-1]=$nota->titulo;
+                                    }else{ ?>
+                                        <tr>
+                                            <?php for($i=0;$i<3;$i++){ ?>
+                                                <th>
+                                                    <?php
+                                                    if($t[$i]!=""){
+                                                        echo $t[$i];
+                                                    } ?>
+                                                </th>
+                                            <?php } ?>
+                                            
+                                        </tr>
+
+                                        <?php
+                                        $t[0]="";
+                                        $t[1]="";
+                                        $t[2]="";
+                                        $cont = 1;
+                                        $t[$cont-1]=$nota->titulo;
+                                    }
+                                }
+                                if($cont>=1){ ?>
+                                    <tr>
+                                        <?php for($i=0;$i<3;$i++){ ?>
+                                                <th> <?php echo $t[$i];?></th>
+                                        <?php } ?> 
+                                    </tr>
+                                <?php } ?>
+                             {{-- @endforeach --}}
                         </tbody>
                     </table>
                 </div>
